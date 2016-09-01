@@ -1,0 +1,46 @@
+.home-product-image {
+    
+    width: 200;
+    height: 200;
+    
+}
+
+.product-detail-image {
+    
+    width: 300;
+    height: 300;
+    
+}
+
+.active-item-product-image {
+  
+  width: 150;
+  height: 150;
+  
+}
+
+.centerBlock {
+    
+  display: table;
+  margin: 0 auto;
+  
+}
+
+.seller-info h4, .seller-info h3 {
+  
+  text-align: right;
+  
+}
+
+.item-detail-image {
+  
+  width: 800;
+  height: 300;
+  
+}
+
+.imageBorder {
+  
+  border: solid grey 5px;
+  
+}
