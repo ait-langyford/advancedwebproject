@@ -5,7 +5,7 @@
     
     $_SESSION['currentpage'] = "Register";
     
-    if (isset($_POST['submit']) && count($_POST['submit']) > 0) {
+    if (isset($_POST['submit'])) {
 
         $submitted = true;
         
@@ -13,7 +13,12 @@
         $username = $_POST["username"];
         $email = $_POST["email"];
         $password = $_POST["password"];
-        $address = ($_POST["address_streetnumber"]." ".$_POST["address_streetname"]." ".$_POST["address_postcode"]." ".$_POST["address_city"]." ".$_POST["address_state"]);
+        $streetnumber = $_POST["address_streetnumber"];
+        $streetname = $_POST["address_streetname"];
+        $suburb = $_POST["address_suburb"];
+        $postcode = $_POST["address_postcode"];
+        $city = $_POST["address_city"];
+        $state = $_POST["address_state"];
         $phonenumber = $_POST["phonenumber"];
         
         // clean email
@@ -50,8 +55,8 @@
             // hash password
             $password = password_hash($password, PASSWORD_DEFAULT);
             
-            $insertQuery = "INSERT INTO  `PedalDistrict`.`users` (`id` , `admin`, `name` ,`username` ,`email` ,`password` ,`address` ,`phonenumber`)
-                            VALUES (NULL , '0', '$name',  '$username',  '$email',  '$password',  '$address',  '$phonenumber')";
+            $insertQuery = "INSERT INTO PedalDistrict.users (`id`, `admin`, `name`, `username`, `email`, `password`, `streetnumber`, `streetname`, `suburb`, `postcode`, `city`, `state`, `phonenumber`)
+                            VALUES (NULL, '0', '$name',  '$username',  '$email',  '$password',  '$streetnumber', '$streetname', '$suburb', '$postcode', '$city', '$state',  '$phonenumber')";
              
             
             $insertQueryResult = $dbconnection->query($insertQuery);
@@ -59,12 +64,13 @@
             // run insert query with completion check
             if ($insertQueryResult) {
                 
-                // todo; redirect
+                // redirect to login
+                header("Location: login.php");
                 
             }
             else if (!$insertQueryResult) {
                 
-                $errors['insert'] = "failed to register account";
+                $errors['insert'] = "failed to register account" . mysqli_error($dbconnection);
                 
             }
             
@@ -138,11 +144,21 @@
                             </br>
                             <input id="address_streetname" name="address_streetname" class="form-control" type="text" placeholder="Street Name">
                             </br>
+                            <input id="address_suburb" name="address_suburb" class="form-control" type="text" placeholder="Suburb">
+                            </br>
                             <input id="address_postcode" name="address_postcode" class="form-control" type="number" placeholder="Postcode">
                             </br>
                             <input id="address_city" name="address_city" class="form-control" type="text" placeholder="City">
                             </br>
-                            <input id="address_state" name="address_state" class="form-control" type="text" placeholder="State">
+                            <select id="address_state" name="address_state" class="form-control">
+                                <option value="NSW">NSW</option>
+                                <option value="VIC">VIC</option>
+                                <option value="NT">NT</option>
+                                <option value="WA">WA</option>
+                                <option value="TAS">TAS</option>
+                                <option value="QLD">QLD</option>
+                                <option value="SA">SA</option>
+                            </select>
                             
                         </div>
                         

@@ -83,7 +83,7 @@
                     </div>
                     <div class="col-xs-12">
                         <!--item location-->
-                        <h2>Sydney, Australia</h2>
+                        <h2><?php echo $seller["city"] . ", " . $seller["state"]; ?></h2>
                     </div>
                     <div class="col-xs-8">
                         <!--price-->
@@ -103,12 +103,6 @@
                 <!--product info section-->
                 <div class="col-md-8">
                     
-                    <!--shipping options-->
-                    <div class="col-md-12">
-                        
-                        <h3>Item Location: <?php echo $seller['address'] ?></h3>
-                        
-                    </div>
                     <div class="col-md-12">
                         
                         <h3>Shipping Options: <?php echo $product['shippingOptions']; ?></h3>

@@ -51,35 +51,43 @@
             $target_file = $target_dir . basename($_FILES["coverImage"]["name"]);
             $imageFileType = pathinfo($target_file, PATHINFO_EXTENSION);
             
-            // Check if image file is a actual image or fake image
-            $realImageCheck = getimagesize($_FILES["coverImage"]["tmp_name"]);
-            if (!$realImageCheck) {
-                $errors["fakeimage"] = "image to be uploaded is not an image";
+                        // check if any image was uploaded
+            if ($_FILES["coverImage"]["tmp_name"] == null) {
+                $errors["noimage"] = "no image was selected";
             }
+            else {
             
-            // Check if file already exists
-            // hash image to be uploaded
-            $coverImageHash = hash_file('md5', $_FILES["coverImage"]["tmp_name"]);
-            $files = scandir("images/");
-            foreach ($files as $file) {
+                // Check if image file is a actual image or fake image
+                $realImageCheck = getimagesize($_FILES["coverImage"]["tmp_name"]);
+                if (!$realImageCheck) {
+                    $errors["fakeimage"] = "image to be uploaded is not an image";
+                }
                 
-                // check if file hash is same as cover image hash
-                if (hash_file('md5', $target_dir.$file) == $coverImageHash) {
+                // Check if file already exists
+                // hash image to be uploaded
+                $coverImageHash = hash_file('md5', $_FILES["coverImage"]["tmp_name"]);
+                $files = scandir("images/");
+                foreach ($files as $file) {
                     
-                    $errors["imageduplicate"] = "image to be uploaded is a duplicate";
+                    // check if file hash is same as cover image hash
+                    if (hash_file('md5', $target_dir.$file) == $coverImageHash) {
+                        
+                        $errors["imageduplicate"] = "image to be uploaded is a duplicate";
+                        
+                    }
                     
                 }
                 
-            }
+                // Check file size
+                if ($_FILES["coverImage"]["size"] > (10 * 1000000)) {
+                    $errors["imagesize"] = "image to be uploaded is too big";
+                }
+                
+                // Allow certain file formats
+                if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif") {
+                    $errors["imagetype"] = "image to be uploaded is not a supported file type";
+                }
             
-            // Check file size
-            if ($_FILES["coverImage"]["size"] > (10 * 1000000)) {
-                $errors["imagesize"] = "image to be uploaded is too big";
-            }
-            
-            // Allow certain file formats
-            if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif") {
-                $errors["imagetype"] = "image to be uploaded is not a supported file type";
             }
             
             // check if there were any errors
@@ -111,7 +119,7 @@
                         
                         // failed to insert into database
                         $queryError = mysqli_error($dbconnection);
-                        echo "<script>console.log('$queryError');</script>";
+                        //echo "<script>console.log('$queryError');</script>";
                         
                         // remove image which might have been uploaded from database
                         unlink($target_dir . $imageFileName);
@@ -137,6 +145,9 @@
                     }
                     if ($errors['imagetype']) {
                         echo $errors['imagetype'] . "<br>";
+                    }
+                    if ($errors['noimage']) {
+                        echo $errors['noimage'] . "<br>";
                     }
                 
                 echo "</div>";
