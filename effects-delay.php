@@ -45,7 +45,8 @@
             
             <?php
                 
-                echo "<h3>Delay Pedals</h3>";
+                echo "<h2>Delay Pedals</h2>";
+                echo "<br>";
                 
                 $numItems = count($productsArray);
                 $numRows = ceil($numItems / 3);
@@ -55,76 +56,40 @@
                     
                     echo "<div class='row'>";
                     
-                        $numCols = $numItems - ($temp - 1);
-                        $maxCols = ($temp + 3);
+                        $numCols = $numItems - ($temp);
                         
-                        for ($p = $temp; $p < $numCols && $p < $maxCols; $p++) {
+                        
+                        for ($p = 0; $p < $numCols && $p < 3; $p++) {
                             
                             echo "<div class='col-xs-12 col-sm-4 col-md-4 col-lg-4'>";
                         
                                 // product image
                                 echo "<div class='centerBlock'>";
-                                    echo "<img src='" . "images/" . $productsArray[$p]['coverImage'] . "' class='home-product-image' id='new-product-image'>";
+                                    echo "<img src='" . "images/" . $productsArray[$temp]['coverImage'] . "' class='home-product-image' id='new-product-image'>";
                                 echo "</div>";
                                 
                                 // product title
-                                echo "<h3>".$productsArray[$p]['title']."</h3>";
+                                echo "<h4>".$productsArray[$temp]['title']."</h4>";
                                 
                                 // product price
                                 echo "<div class='col-xs-6 col-sm-6 col-md-6 col-lg-6'>";
-                                    echo "<h3> $".$productsArray[$p]['price']."</h3>";
+                                    echo "<h4> $".$productsArray[$temp]['price']."</h4>";
                                 echo "</div>";
                                 
                                 // view button
                                 echo "<div class='col-xs-6 col-sm-6 col-md-6 col-lg-6'>";
-                                    echo "<a class=\"btn btn-default\" href=\"product-detail.php?id=".$productsArray[$p]['id']."\";>View</a>";
+                                    echo "<a class=\"btn btn-default\" href=\"product-detail.php?id=".$productsArray[$temp]['id']."\";>View</a>";
                                 echo "</div>";
                             
                             echo "</div>";
                             
-                            $temp = $p;
+                            $temp++;
                             
                         }
                     
                     echo "</div>";
                     
                 }
-                
-                /*$itemCount = count($productsArray);
-                
-                for ($i = 0; $i < $itemCount; $i++) {
-                    
-                    if ($i % 3 == 0 || $i == 0) {
-                        echo "<div class='row'>";
-                    }
-                    
-                        echo "<div class='col-xs-4 col-sm-4 col-md-4 col-lg-4'>";
-                        
-                            // product image
-                            echo "<div class='centerBlock'>";
-                                echo "<img src='" . "images/" . $productsArray[$i]['coverImage'] . "' class='home-product-image' id='new-product-image'>";
-                            echo "</div>";
-                            
-                            // product title
-                            echo "<h3>".$productsArray[$i]['title']."</h3>";
-                            
-                            // product price
-                            echo "<div class='col-xs-6 col-sm-6 col-md-6 col-lg-6'>";
-                                echo "<h3> $".$productsArray[$i]['price']."</h3>";
-                            echo "</div>";
-                            
-                            // view button
-                            echo "<div class='col-xs-6 col-sm-6 col-md-6 col-lg-6'>";
-                                echo "<a class=\"btn btn-default\" href=\"product-detail.php?id=".$productsArray[$i]['id']."\";>View</a>";
-                            echo "</div>";
-                            
-                        echo "</div>";
-                    
-                    if ($i == ((($i % 3) * 3) - 1)) {
-                        echo "</div>";
-                    }
-                    
-                }*/
             
             ?>
                 

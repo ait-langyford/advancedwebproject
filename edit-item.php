@@ -73,7 +73,6 @@
                         <h2>Edit Item</h2>
                     </div>
                     <div class="col-md-4">
-                        <button class="btn btn-default pull-right" type="button">Save Details</button>
                         <input class="btn btn-default pull-right" id="updateButton" type="submit" name="update" value="Update Details"/>
                     </div>
                 </div>
@@ -138,41 +137,6 @@
                     <!--product info section-->
                     <div class="col-md-12">
                         
-                        <!--item location-->
-                        <div class="col-md-12">
-                            
-                            <h3>Item Location</h3>
-                            <!--suburb-->
-                            <div class="col-md-4">
-                                <label for="suburb">Suburb</label>
-                                <input type="text" name="suburb" id="suburb" class="form-control" value="<?php echo $seller['suburb']; ?>">
-                            </div>
-                            <!--postcode-->
-                            <div class="col-md-2">
-                                <label for="postcode">Postcode</label>
-                                <input type="number" name="postcode" id="postcode" class="form-control" value="<?php echo $seller['postcode']; ?>">
-                            </div>
-                            <!--city-->
-                            <div class="col-md-4">
-                                <label for="city">City</label>
-                                <input type="text" name="city" id="city" class="form-control" value="<?php echo $seller['city']; ?>">
-                            </div>
-                            <!--state-->
-                            <div class="col-md-2">
-                                <label for="state">State</label>
-                                <select id="state" name="state" class="form-control">
-                                    <option value="NSW" <?php if ($product['state'] == "NSW") { echo "selected='selected'"; } ?> >NSW</option>
-                                    <option value="VIC" <?php if ($product['state'] == "VIC") { echo "selected='selected'"; } ?> >VIC</option>
-                                    <option value="NT" <?php if ($product['state'] == "NT") { echo "selected='selected'"; } ?> >NT</option>
-                                    <option value="WA" <?php if ($product['state'] == "WA") { echo "selected='selected'"; } ?> >WA</option>
-                                    <option value="TAS" <?php if ($product['state'] == "TAS") { echo "selected='selected'"; } ?> >TAS</option>
-                                    <option value="QLD" <?php if ($product['state'] == "QLD") { echo "selected='selected'"; } ?> >QLD</option>
-                                    <option value="SA" <?php if ($product['state'] == "SA") { echo "selected='selected'"; } ?> >SA</option>
-                                </select>
-                            </div>
-                            
-                        </div>
-                        
                         <div class="col-md-12">
                             
                             <!--shipping options-->
@@ -207,21 +171,8 @@ $(document).ready(function() {
 
     $('#updateButton').click(function() {
         
-        var phpUrl = "updateItem.php";
-        var data = {
-                
-            'title': $("input#title").val(),
-            'category': $("input#category").val(),
-            'subcategory': $("input#subcategory").val(),
-            'price': $("input#price").val(),
-            'shippingOptions': $("input#shipping-options").val(),
-            'description': $("input#description").val()
-
-        };
+        $.post( "updateItem.php", { title: $("input#title").val(), category: $("input#category").val(), subcategory: $("input#subcategory").val(), price: $("input#price").val(), shippingOptions: $("input#shipping-options").val(), description: $("input#description").val() } );
         
-        $.post("updateItem.php", data, function (response){
-            // success response
-        });
     });
     
 });

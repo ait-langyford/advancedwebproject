@@ -5,7 +5,7 @@
     
     $_SESSION['currentpage'] = "Chorus";
     
-    // get chrous items from effects table in db
+    // get delay items from effects table in db
     $productQuery = "SELECT * FROM PedalDistrict.products WHERE subcategory = 'Chorus';";
     $productQueryResults = $dbconnection->query($productQuery);
     
@@ -44,44 +44,50 @@
         <div class="container">
             
             <?php
-            
-                $productIndex = 0;
                 
-                echo "<h3>Chorus Pedals</h3>";
+                echo "<h2>Chorus Pedals</h2>";
+                echo "<br>";
                 
-                // row
-                for ($i = 0; $i <= 2; $i++) {
+                $numItems = count($productsArray);
+                $numRows = ceil($numItems / 3);
+                $temp = 0;
+                
+                for ($i = 0; $i < $numRows; $i++) {
                     
                     echo "<div class='row'>";
                     
-                    // column
-                    for ($p = 0; $p <= 2; $p++) {
+                        $numCols = $numItems - ($temp);
                         
-                        echo "<div class='col-md-4 col-sm-4'>";
                         
-                            // product image
-                            echo "<div class='centerBlock'>";
-                                echo "<img src='#' class='home-product-image' id='new-product-image'>";
+                        for ($p = 0; $p < $numCols && $p < 3; $p++) {
+                            
+                            echo "<div class='col-xs-12 col-sm-4 col-md-4 col-lg-4'>";
+                        
+                                // product image
+                                echo "<div class='centerBlock'>";
+                                    echo "<img src='" . "images/" . $productsArray[$temp]['coverImage'] . "' class='home-product-image' id='new-product-image'>";
+                                echo "</div>";
+                                
+                                // product title
+                                echo "<h4>".$productsArray[$temp]['title']."</h4>";
+                                
+                                // product price
+                                echo "<div class='col-xs-6 col-sm-6 col-md-6 col-lg-6'>";
+                                    echo "<h4> $".$productsArray[$temp]['price']."</h4>";
+                                echo "</div>";
+                                
+                                // view button
+                                echo "<div class='col-xs-6 col-sm-6 col-md-6 col-lg-6'>";
+                                    echo "<a class=\"btn btn-default\" href=\"product-detail.php?id=".$productsArray[$temp]['id']."\";>View</a>";
+                                echo "</div>";
+                            
                             echo "</div>";
                             
-                            // product title
-                            echo "<h3>".$productsArray[$productIndex]['title']."</h3>";
+                            $temp++;
                             
-                            // product price
-                            echo "<div class='col-md-6 col-sm-6'>";
-                                echo "<h3> $".$productsArray[$productIndex]['price']."</h3>";
-                            echo "</div>";
-                            
-                            // view button
-                            echo "<div class='col-md-6 col-sm-6'>";
-                                echo "<a class=\"btn btn-default\" href=\"product-detail.php?id=".$productsArray[$productIndex]['id']."\";>View</a>";
-                            echo "</div>";
-                            
-                        echo "</div>";
+                        }
                         
-                        $productIndex++;
                         
-                    }
                     
                     echo "</div>";
                     

@@ -58,7 +58,8 @@
             
             <?php
             
-                echo "<h3>Your Active Items</h3>";
+                echo "<h2>Your Active Items</h2>";
+                echo "<hr>";
                 
                 for ($i = 0; $i < count($itemsArray); $i++) {
                     
@@ -66,25 +67,25 @@
                     echo "<div class='row'>";
                     
                         // product image
-                        echo "<div class='col-md-4'>";
+                        echo "<div class='col-xs-12 col-sm-4 col-md-4 col-lg-4'>";
                         
                             $coverImage = "images/" . $itemsArray[$i]["coverImage"];
-                            echo "<img src='$coverImage' class='active-item-product-image'>";
+                            echo "<img src='$coverImage' class='active-item-product-image center-block'>";
                         
                         echo "</div>";
                         // product details + action buttons
-                        echo "<div class='col-md-8'>";
+                        echo "<div class='col-xs-12 col-sm-8 col-md-8 col-lg-8'>";
                         
                             // item details
                             echo "<div class='row'>";
                             
-                                echo "<div class='col-md-8'>";
+                                echo "<div class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>";
                                 
                                     // product title
                                     echo "<h3>" . $itemsArray[$i]["title"] . "</h3>";
                                 
                                 echo "</div>";
-                                echo "<div class='col-md-4'>";
+                                echo "<div class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>";
                                 
                                     // product price
                                     echo "<h3>$" . $itemsArray[$i]["price"] . "</h3>";
@@ -96,22 +97,23 @@
                             // action buttons
                             echo "<div class='row'>";
                             
-                                echo "<div class='col-md-4'>";
-                                    echo "<a class=\"btn btn-default\" href=\"product-detail.php?id=".$itemsArray[$i]['id']."\";>View</a>";
+                                echo "<div class='col-xs-4 col-sm-4 col-md-4 col-lg-4'>";
+                                    echo "<a class=\"btn btn-default\" style=\"width: 100%;\" href=\"product-detail.php?id=".$itemsArray[$i]['id']."\";>View</a>";
                                 echo "</div>";
-                                echo "<div class='col-md-4'>";
-                                    echo "<a class=\"btn btn-default\" href=\"edit-item.php?id=".$itemsArray[$i]['id']."\";>Edit</a>";
+                                echo "<div class='col-xs-4 col-sm-4 col-md-4 col-lg-4'>";
+                                    echo "<a class=\"btn btn-default\" style=\"width: 100%;\" href=\"edit-item.php?id=".$itemsArray[$i]['id']."\";>Edit</a>";
                                 echo "</div>";
-                                echo "<div class='col-md-4'>";
-                                    echo "<a class=\"btn btn-default\" href=\"remove-item.php?id=".$itemsArray[$i]['id']."\";>Remove</a>";
+                                echo "<div class='col-xs-4 col-sm-4 col-md-4 col-lg-4'>";
+                                    echo "<a class=\"btn btn-default\" style=\"width: 100%;\" href=\"remove-item.php?id=".$itemsArray[$i]['id']."\";>Remove</a>";
                                 echo "</div>";
                             
                             echo "</div>";
                         
                         echo "</div>";
-                        
                     
                     echo "</div>";
+                    
+                    echo "<hr>";
                     
                 }
             

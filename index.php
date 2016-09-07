@@ -66,11 +66,11 @@
                             echo "</div>";
                             
                             // product title
-                            echo "<h3>" . $category1Array[$col]['title'] . "</h3>";
+                            echo "<h4>" . $category1Array[$col]['title'] . "</h4>";
                             
                             // product price
                             echo "<div class='col-md-6 col-sm-6'>";
-                                echo "<h3>$" . $category1Array[$col]['price'] . "</h3>";
+                                echo "<h4>$" . $category1Array[$col]['price'] . "</h4>";
                             echo "</div>";
                             echo "<div class='col-md-6 col-sm-6'>";
                                  echo "<a class='btn btn-default' href='product-detail.php?id=".$category1Array[$col]['id']."'>View</a>";
@@ -102,11 +102,11 @@
                         echo "</div>";
                         
                         // product title
-                        echo "<h3>" . $category2Array[$col]['title'] . "</h3>";
+                        echo "<h4>" . $category2Array[$col]['title'] . "</h4>";
                         
                         // product price
                         echo "<div class='col-md-6 col-sm-6'>";
-                            echo "<h3>$" . $category2Array[$col]['price'] . "</h3>";
+                            echo "<h4>$" . $category2Array[$col]['price'] . "</h4>";
                         echo "</div>";
                         echo "<div class='col-md-6 col-sm-6'>";
                              echo "<a class='btn btn-default' href='product-detail.php?id=".$category2Array[$col]['id']."'>View</a>";
@@ -138,11 +138,11 @@
                             echo "</div>";
                             
                             // product title
-                            echo "<h3>" . $category3Array[$col]['title'] . "</h3>";
+                            echo "<h4>" . $category3Array[$col]['title'] . "</h4>";
                             
                             // product price
                             echo "<div class='col-md-6 col-sm-6'>";
-                                echo "<h3>$" . $category3Array[$col]['price'] . "</h3>";
+                                echo "<h4>$" . $category3Array[$col]['price'] . "</h4>";
                             echo "</div>";
                             echo "<div class='col-md-6 col-sm-6'>";
                                  echo "<a class='btn btn-default' href='product-detail.php?id=".$category3Array[$col]['id']."'>View</a>";
