@@ -78,7 +78,7 @@
                                 
                                 // view button
                                 echo "<div class='col-xs-6 col-sm-6 col-md-6 col-lg-6'>";
-                                    echo "<a class=\"btn btn-default\" href=\"product-detail.php?id=".$productsArray[$temp]['id']."\";>View</a>";
+                                    echo "<a class=\"btn btn-default pull-right\" href=\"product-detail.php?id=".$productsArray[$temp]['id']."\";>View</a>";
                                 echo "</div>";
                             
                             echo "</div>";
@@ -96,6 +96,10 @@
             ?>
                 
         </div>
+        
+        <hr>
+        
+        <?php include("footer.php"); ?>
         
     </body>
     

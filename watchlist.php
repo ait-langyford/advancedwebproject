@@ -18,4 +18,7 @@
     <body>
         
     </body>
+    
+    <?php include("footer.php"); ?>
+    
 </html>

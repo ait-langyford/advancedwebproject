@@ -1,22 +1,35 @@
+body {
+  
+  font-family: 'Raleway', sans-serif;
+  
+}
+
 .home-product-image {
     
-    width: 200;
-    height: 200;
+    width: 200px;
+    height: 200px;
     
 }
 
 .product-detail-image {
     
-    width: 300;
-    height: 300;
+    width: 300px;
+    height: 300px;
     
 }
 
 .active-item-product-image {
   
-  width: 150;
-  height: 150;
+  width: 150px;
+  height: 150px;
   
+}
+
+.offer-item-image {
+    
+    width: 150px;
+    height: 150px;
+    
 }
 
 .centerBlock {
@@ -26,21 +39,66 @@
   
 }
 
-.seller-info h4, .seller-info h3 {
+footer {
   
-  
-  
-}
-
-.item-detail-image {
-  
-  width: 800;
-  height: 300;
+  background-color: #337AB7;
+  color: white;
   
 }
 
-.imageBorder {
+footer ul li a {
   
-  border: solid grey 5px;
+  color: white;
   
+}
+
+.outline {
+    background-color: transparent;
+    color: inherit;
+    transition: all .25s;
+}
+.btn-primary.outline {
+    color: #428bca;
+}
+.btn-success.outline {
+    color: #5cb85c;
+}
+.btn-info.outline {
+    color: #5bc0de;
+}
+.btn-warning.outline {
+    color: #f0ad4e;
+}
+.btn-danger.outline {
+    color: #d9534f;
+}
+.btn-primary.outline:hover,
+.btn-success.outline:hover,
+.btn-info.outline:hover,
+.btn-warning.outline:hover,
+.btn-danger.outline:hover {
+    color: #fff;
+}
+
+.navbar-custom {
+    background-color:#337AB7;
+    color:#ffffff;
+    border-radius:0;
+}
+
+.navbar-custom .navbar-nav > li > a {
+    color:#fff;
+}
+.navbar-custom .navbar-nav > .active > a, .navbar-nav > .active > a:hover, .navbar-nav > .active > a:focus {
+    color: #ffffff;
+    background-color:transparent;
+}
+.navbar-custom .navbar-brand {
+    color:#eeeeee;
+}
+
+.page {
+    
+    min-height: 600px;
+    
 }

@@ -1,6 +1,33 @@
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-custom">
   
   <div class="container-fluid">
+    
+    <div class="row">
+      
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        
+        <h1 style="color: white">PedalDistrict</h1>
+        
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        
+        <form class="navbar-form navbar-right" action="search.php" method="post">
+      
+          <div class="form-group">
+            
+            <input type="text" name="search" class="form-control btn-default outline" placeholder="Search">
+            
+            <button type="submit" role="search" class="btn btn-default outline">
+              Search
+            </button>
+            
+          </div>
+          
+        </form>
+        
+      </div>
+      
+    </div>
     
     <ul class="nav navbar-nav">
       <li><a href="index.php">Home</a></li>
@@ -54,19 +81,6 @@
       ?>
       
     </ul>
-    
-    <form class="navbar-form navbar-right" action="search.php" method="post">
-      
-      <div class="form-group">
-        
-        <input type="text" name="search" class="form-control" placeholder="Search">
-        
-        <button type="submit" role="search" class="btn btn-default">
-          Search
-        </button>
-        
-        </div>
-    </form>
   </div>
 </nav>
 
@@ -163,25 +177,5 @@
     
   </div>
   
-</div>
-
-<div class="container">
-  
-  <div class="row">
-    
-    <div class="col-md-6">
-      
-      <?php
-      
-        if($_SESSION["email"]) {
-          
-          echo "<p>Hello ".$_SESSION["email"]."</p>";
-          
-        }
-        
-      ?>
-      
-    </div>
-  </div>
 </div>
 

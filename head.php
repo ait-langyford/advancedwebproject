@@ -6,4 +6,5 @@
   <script src="../components/jquery/dist/jquery.js"></script>
   <script src="../components/bootstrap/dist/js/bootstrap.js"></script>
   <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 </head>

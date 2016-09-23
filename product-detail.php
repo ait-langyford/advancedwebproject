@@ -85,11 +85,11 @@
                     </div>
                     <div class="col-xs-8">
                         <!--price-->
-                        <h2 style="color: grey;"><?php echo "$".$product['price']; ?></h2>
+                        <h2 style="color: grey;"><?php echo "$".$product['price']; if ($product["tradable"] == 1) { echo " or trade offer"; }?></h2>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
                         <!--buttons-->
-                        <a class="btn btn-default pull-right" href="#">make offer</a>
+                        <a class="btn btn-default pull-right" href="makeOffer.php?productId=<?php echo $product['id']; ?>">make offer</a>
                         <a class="btn btn-default pull-right" href="#">contact seller</a>
                     </div>
                 
@@ -119,7 +119,7 @@
                     
                     <div class="tab-content">
                         <div id="description" class="tab-pane fade in active">
-                            <h3>Description:</h3>
+                            <h3>Description</h3>
                             <p><?php echo $product['description']; ?></p>
                         </div>
                         
@@ -138,17 +138,19 @@
                                 <h4 style="color: grey;"><?php echo $seller['phonenumber']; ?></h4>
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                <h3>seller reviews: todo</h3>
+                                <h3>Seller Reviews:</h3>
+                                <h4 style="color: grey;">This seller currently has no reviews</h4>
                             </div>
                         </div>
                         
                         <div id="shipping-options" class="tab-pane fade">
                             <h3>Shipping Options: <?php echo $product['shippingOptions']; ?></h3>
+                            <?php if ($product["shippingPrice"] != 0) { echo "<h3>Shipping Price: $".$product["shippingPrice"]."</h3>"; } ?>
                             <img src="https://maps.google.com/maps/api/staticmap?center=<?php echo $seller['postcode']; ?>, + Australia&zoom=14&size=800x300&maptype=roadmap&markers=color:ORANGE|label:<?php echo $seller['suburb']; ?>|<?php echo $seller['postcode']; ?>, +Australia&sensor=false" style="width: 100%;">
                         </div>
                         
                         <div id="images" class="tab-pane fade">
-                            <h3>images</h3>
+                            <h3>more images</h3>
                         </div>
                         
                     </div>
@@ -158,6 +160,10 @@
             </div>
             
         </div>
+        
+        <hr>
+        
+        <?php include("footer.php"); ?>
         
     </body>
     

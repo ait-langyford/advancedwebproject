@@ -62,7 +62,7 @@
                             // product image
                             echo "<div class='centerBlock'>";
                                 $coverImage = "images/" . $category1Array[$col]['coverImage'];
-                                echo "<img src='$coverImage' class='home-product-image' id='new-product-image'>";
+                                echo "<img src='$coverImage' class='home-product-image img-responsive' id='new-product-image'>";
                             echo "</div>";
                             
                             // product title
@@ -73,7 +73,7 @@
                                 echo "<h4>$" . $category1Array[$col]['price'] . "</h4>";
                             echo "</div>";
                             echo "<div class='col-md-6 col-sm-6'>";
-                                 echo "<a class='btn btn-default' href='product-detail.php?id=".$category1Array[$col]['id']."'>View</a>";
+                                 echo "<a class='btn btn-default pull-right' href='product-detail.php?id=".$category1Array[$col]['id']."'>View</a>";
                             echo "</div>";
                     
                         echo "</div>";
@@ -98,7 +98,7 @@
                         // product image
                         echo "<div class='centerBlock'>";
                             $coverImage = "images/" . $category2Array[$col]['coverImage'];
-                            echo "<img src='$coverImage' class='home-product-image' id='new-product-image'>";
+                            echo "<img src='$coverImage' class='home-product-image img-responsive' id='new-product-image'>";
                         echo "</div>";
                         
                         // product title
@@ -109,7 +109,7 @@
                             echo "<h4>$" . $category2Array[$col]['price'] . "</h4>";
                         echo "</div>";
                         echo "<div class='col-md-6 col-sm-6'>";
-                             echo "<a class='btn btn-default' href='product-detail.php?id=".$category2Array[$col]['id']."'>View</a>";
+                             echo "<a class='btn btn-default pull-right' href='product-detail.php?id=".$category2Array[$col]['id']."'>View</a>";
                         echo "</div>";
                 
                     echo "</div>";
@@ -134,7 +134,7 @@
                             // product image
                             echo "<div class='centerBlock'>";
                                 $coverImage = "images/" . $category3Array[$col]['coverImage'];
-                                echo "<img src='$coverImage' class='home-product-image' id='new-product-image'>";
+                                echo "<img src='$coverImage' class='home-product-image img-responsive' id='new-product-image'>";
                             echo "</div>";
                             
                             // product title
@@ -145,7 +145,7 @@
                                 echo "<h4>$" . $category3Array[$col]['price'] . "</h4>";
                             echo "</div>";
                             echo "<div class='col-md-6 col-sm-6'>";
-                                 echo "<a class='btn btn-default' href='product-detail.php?id=".$category3Array[$col]['id']."'>View</a>";
+                                 echo "<a class='btn btn-default pull-right' href='product-detail.php?id=".$category3Array[$col]['id']."'>View</a>";
                             echo "</div>";
                     
                         echo "</div>";
@@ -162,6 +162,10 @@
             ?>
             
         </div>
+        
+        <hr>
+        
+        <?php include("footer.php"); ?>
         
     </body>
     

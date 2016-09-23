@@ -23,6 +23,21 @@
         // get input values
         $title = $_POST["title"];
         $price = $_POST["price"];
+        if (isset($_POST["tradable"])) {
+            $tradable = 1;
+        }
+        else {
+            $tradable = 0;
+        }
+        
+        $shippingPrice;
+        if ($_POST["shippingPrice"] == 0) {
+            $shippingPrice = null;
+        }
+        else {
+            $shippingPrice = $_POST["shippingPrice"];
+        }
+        
         $description = $_POST["description"];
         
         // get seller's id
@@ -99,8 +114,8 @@
                     $coverImage = $imageFileName;
                     
                     // insert item into product db table
-                    $insertProductQuery = "INSERT INTO PedalDistrict.products (`id`, `title`, `price`, `description`, `coverImage`, `image1`, `image2`, `image3`, `image4`, `image5`, `sellerId`, `shippingOptions`, `category`, `subcategory`)
-                                    VALUES (NULL, '$title', '$price', '$description', '$coverImage', NULL, NULL, NULL, NULL, NULL, '$sellerId', '$shippingOptions', '$category', '$subcategory');";
+                    $insertProductQuery = "INSERT INTO PedalDistrict.products (`id`, `title`, `price`, `tradable`, `shippingPrice`, `description`, `coverImage`, `image1`, `image2`, `image3`, `image4`, `image5`, `sellerId`, `shippingOptions`, `category`, `subcategory`)
+                                    VALUES (NULL, '$title', '$price', '$tradable', '$shippingPrice', '$description', '$coverImage', NULL, NULL, NULL, NULL, NULL, '$sellerId', '$shippingOptions', '$category', '$subcategory');";
                     
                     $insertProductResult = $dbconnection->query($insertProductQuery);
             
@@ -177,7 +192,9 @@
             <!--add product form-->
             <div class="row">
                 
-                <div class="col-md-6 col-offset-3">
+                <h3>Sell an Item</h3>
+                
+                <div class="col-md-6 col-centered">
                     
                     <form id="add-product-form" action="add-product.php" method="post" enctype="multipart/form-data">
                         
@@ -194,6 +211,15 @@
                             
                             <label for="price">Price</label>
                             <input id="price" name="price" type="number" class="form-control" placeholder="product price">
+                            
+                        </div>
+                        
+                        <!--trade offer-->
+                        <div class="form-group">
+                            
+                            <div class="checkbox">
+                                <label><input type="checkbox" name="tradable" value="tradable">Allow trade offers</label>
+                            </div>
                             
                         </div>
                         
@@ -215,6 +241,11 @@
                                 <option value="Pickup and Shipping">Pickup and Shipping</option>
                             </select>
                             
+                        </div>
+                        
+                        <!--shipping price-->
+                        <div class="form-group">
+                            <input id="shippingPrice" name="shippingPrice" type="number" class="form-control" placeholder="shipping price (leave empty if pickup only)">
                         </div>
                         
                         <!--category-->
@@ -267,6 +298,10 @@
             </div>
             
         </div>
+        
+        <hr>
+        
+        <?php include("footer.php"); ?>
         
     </body>
     
