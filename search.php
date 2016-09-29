@@ -108,6 +108,7 @@
                 else {
                     
                     // array empty, show no results text
+                    echo "<h3 style='color: grey'>no results found</h3>";
                     
                 }
             

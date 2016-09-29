@@ -58,9 +58,30 @@
           echo "<li><a href=\"messages.php\">Messages</a></li>";
           echo "<li><a href=\"offers.php\">Offers</a></li>";
           echo "<li><a href=\"add-product.php\">Sell an item</a></li>";
+          
+          // get number of items in user's watchlist
+          // get current user details
+          $userEmail = $_SESSION["email"];
+          $userQuery = "SELECT * FROM users WHERE email='$userEmail'";
+          $queryResult = $dbconnection->query($userQuery);
+          
+          $user;
+          $userId;
+          if ($queryResult->num_rows == 1) {
+              
+              $user = $queryResult->fetch_assoc();
+              $userId = $user["id"];
+              
+          }
+          
+          // load all items in users watchlist from watchlist table
+          $watchlistQuery = "SELECT * FROM watchlist WHERE userId='$userId'";
+          $queryResult = $dbconnection->query($watchlistQuery);
+          $watchlistNum = $queryResult->num_rows;
+          
           echo "<li><a href=\"watchlist.php\">
           <span class=\"glyphicon glyphicon-shopping-cart\"></span>
-          <span class=\"badge cart-total\">0</span></a></li>";
+          <span class=\"badge cart-total\">$watchlistNum</span></a></li>";
         }
         
       ?>

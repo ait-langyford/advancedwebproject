@@ -5,6 +5,21 @@
     
     $_SESSION['currentpage'] = "Product";
     
+    // get current user if they are logged in
+    if ($_SESSION["email"]) {
+        
+        $userEmail = $_SESSION["email"];
+        $userQuery = "SELECT * FROM users WHERE email='$userEmail'";
+        $queryResult = $dbconnection->query($userQuery);
+        
+        $user;
+        if ($queryResult->num_rows == 1) {
+            $user = $queryResult->fetch_assoc();
+        }
+        $userId = $user["id"];
+        
+    }
+    
     $id = $_GET["id"];
     $id = filter_var($id, FILTER_SANITIZE_NUMBER_INT);
     
@@ -91,6 +106,7 @@
                         <!--buttons-->
                         <a class="btn btn-default pull-right" href="makeOffer.php?productId=<?php echo $product['id']; ?>">make offer</a>
                         <a class="btn btn-default pull-right" href="#">contact seller</a>
+                        <a class="btn btn-default pull-right" href="addToWatchlist.php?productId=<?php echo $product['id']; ?>&userId=<?php echo $userId; ?>">add to watchlist</a>
                     </div>
                 
                 </div>
