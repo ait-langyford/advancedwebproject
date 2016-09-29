@@ -3,11 +3,18 @@
     session_start();
     include("dbconnection.php");
     
+    // make sure user is logged in
+    if (!$_SESSION["email"]) {
+        
+        header("location: login.php");
+        exit();
+        
+    }
+    
     $_SESSION['currentpage'] = "Make Offer";
     
     // get product for sale
-    $saleProductId = $_GET["productId"];
-    $_SESSION['currentProductId'] = $_GET["productId"];
+    $saleProductId = $_GET["productId"];   
     $saleProductQuery = "SELECT * FROM products WHERE id='$saleProductId'";
     $saleProductResult = $dbconnection->query($saleProductQuery);
     
@@ -27,6 +34,7 @@
     $buyer;
     if ($buyerResult->num_rows == 1) {
         
+        // found the buyer
         $buyer = $buyerResult->fetch_assoc();
         
     }
@@ -50,17 +58,19 @@
     if (isset($_POST["submit"]) && count($_POST["submit"]) > 0) {
         
         // get all input values
-        $saleProductId = $saleProduct['id'];
+        $saleProductId = $_SESSION["saleProductId"];
         $buyerId = $_SESSION["currentProductBuyerId"];
-        $tradeProductId = null;
-        if (isset($_POST["optradio"])) {
+        if ($_POST["optradio"] == "empty") {
+            $tradeProductId = null;
+        }
+        else {
             $tradeProductId = $_POST["optradio"];
         }
-        echo "<script>alert($saleProduct);</script>";
-        $sellerId = $saleProduct["sellerId"];
+        
+        $sellerId = $_SESSION["sellerId"];
         $status = "pending";
         $dateArray = getdate();
-        $dateFormat = $dateArray["wday"] . " " . $dateArray["mday"] . "/" . $dateArray["mon"] . "/" . $dateArray["year"];
+        $dateFormat = $dateArray["weekday"] . ", " . $dateArray["mday"] . "/" . $dateArray["mon"] . "/" . $dateArray["year"];
         $conditions = $_POST["description"];
         $price = $_POST["price"];
         
@@ -80,6 +90,24 @@
             // testing
             $sqlErrorMsg = mysqli_error($dbconnection);
             echo "<script>console.log('failed query: $sqlErrorMsg');</script>";
+            
+        }
+        
+    }
+    else {
+        
+        $_SESSION["saleProductId"] = $_GET["productId"];
+        $saleProductId = $_SESSION["saleProductId"];
+        $saleProductQuery = "SELECT * FROM products WHERE id='$saleProductId'";
+        $saleProductResult = $dbconnection->query($saleProductQuery);
+        
+        $saleProduct;
+        if ($saleProductResult->num_rows == 1) {
+            
+            // found the product
+            $saleProduct = $saleProductResult->fetch_assoc();
+            
+            $_SESSION["sellerId"] = $saleProduct["sellerId"];
             
         }
         
@@ -182,7 +210,7 @@
                                 
                                     // select item radio button
                                     echo "<div class='col-xs-12 col-sm-2 col-md-2 col-lg-2'>";
-                                        echo "<input type=\"radio\" name=\"optradio\" value=\"null\">";
+                                        echo "<input type=\"radio\" name=\"optradio\" value=\"empty\" checked=\"checked\">";
                                     echo "</div>";
                                     echo "<div class='col-xs-12 col-sm-2 col-md-2 col-lg-2'>";
                                         echo "<h3>no item</h3>";

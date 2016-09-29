@@ -11,15 +11,13 @@
       </div>
       <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         
-        <form class="navbar-form navbar-right" action="search.php" method="post">
+        <form class="navbar-form navbar-right" action="search.php" method="get">
       
           <div class="form-group">
             
             <input type="text" name="search" class="form-control btn-default outline" placeholder="Search">
             
-            <button type="submit" role="search" class="btn btn-default outline">
-              Search
-            </button>
+            <button type="submit" role="search" class="btn btn-default outline">Search</button>
             
           </div>
           
@@ -58,7 +56,7 @@
           }
           
           echo "<li><a href=\"messages.php\">Messages</a></li>";
-          echo "<li><a href=\"messages.php\">Offers</a></li>";
+          echo "<li><a href=\"offers.php\">Offers</a></li>";
           echo "<li><a href=\"add-product.php\">Sell an item</a></li>";
           echo "<li><a href=\"watchlist.php\">
           <span class=\"glyphicon glyphicon-shopping-cart\"></span>
