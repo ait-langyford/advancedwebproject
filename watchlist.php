@@ -73,7 +73,7 @@
         
         <?php include("navigation.php"); ?>
         
-        <div class="container">
+        <div class="container page">
                 
             <h2>Your Watchlist</h2>
             

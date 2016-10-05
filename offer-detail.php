@@ -53,22 +53,6 @@
         $tradeProduct = $queryResult->fetch_assoc();
     }
     
-    // offer price
-    
-    // notes / conditions
-    
-    // status
-    
-    // date
-    
-    // if is seller
-        // buyer information
-        // accept offer; decline offer; message buyer
-    // if is buyer
-        // seller information
-        // message seller
-    
-    
 ?>
 
 <!doctype HTML>
@@ -263,12 +247,12 @@
                         echo "<hr>";
                         // accept offer button
                         echo "<div class='col-xs-12 col-sm-6 col-md-6 col-lg-6'>";
-                            echo "<a class=\"btn btn-default\" style=\"width: 100%;\" href=\"accept-offer.php?id="."\";>Accept Offer</a>";
+                            echo "<a class=\"btn btn-default\" style=\"width: 100%;\" href=\"accept-offer.php?offerId=" . $offer["id"] ."\";>Accept Offer</a>";
                         echo "</div>";
                         
                         // decline offer button
                         echo "<div class='col-xs-12 col-sm-6 col-md-6 col-lg-6'>";
-                            echo "<a class=\"btn btn-default\" style=\"width: 100%;\" href=\"decline-offer.php?id="."\";>Decline Offer</a>";
+                            echo "<a class=\"btn btn-default\" style=\"width: 100%;\" href=\"decline-offer.php?offerId=" . $offer["id"] ."\";>Decline Offer</a>";
                         echo "</div>";
                         
                     }

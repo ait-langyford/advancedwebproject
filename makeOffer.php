@@ -81,7 +81,7 @@
         if ($dbconnection->query($offerInsertQuery)) {
             
             // success; redirect to your offers page
-            header("location: myOffers.php");
+            header("location: offers.php");
             
         }
         else {

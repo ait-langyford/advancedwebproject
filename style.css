@@ -102,3 +102,16 @@ footer ul li a {
     min-height: 600px;
     
 }
+
+#logoText {
+    
+    color: white;
+    font-size: 36px;
+    text-decoration: none;
+    
+}
+#logoText:hover {
+    
+    
+    
+}

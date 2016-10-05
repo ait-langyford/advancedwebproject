@@ -6,7 +6,8 @@
       
       <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         
-        <h1 style="color: white">PedalDistrict</h1>
+        <!--<h1 style="color: white">PedalDistrict</h1>-->
+        <a href="index.php" id="logoText">PedalDistrict</a>
         
       </div>
       <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
@@ -55,7 +56,6 @@
             
           }
           
-          echo "<li><a href=\"messages.php\">Messages</a></li>";
           echo "<li><a href=\"offers.php\">Offers</a></li>";
           echo "<li><a href=\"add-product.php\">Sell an item</a></li>";
           
@@ -116,7 +116,7 @@
           
           echo "<li class=\"active\"><a href=\"user-dashboard.php\">Edit Account</a></li>";
           echo "<li><a href=\"user-dashboard-activeitems.php\">Your Active Items</a></li>";
-          echo "<li><a href=\"#\">Transaction History</a></li>";
+          echo "<li><a href=\"transaction-history.php\">Transaction History</a></li>";
           echo "<li><a href=\"#\">Payment Options</a></li>";
           
         }
@@ -124,7 +124,7 @@
           
           echo "<li><a href=\"user-dashboard.php\">Edit Account</a></li>";
           echo "<li class=\"active\"><a href=\"user-dashboard-activeitems.php\">Your Active Items</a></li>";
-          echo "<li><a href=\"#\">Transaction History</a></li>";
+          echo "<li><a href=\"transaction-history.php\">Transaction History</a></li>";
           echo "<li><a href=\"#\">Payment Options</a></li>";
           
         }
@@ -132,7 +132,7 @@
           
           echo "<li><a href=\"user-dashboard.php\">Edit Account</a></li>";
           echo "<li><a href=\"user-dashboard-activeitems.php\">Your Active Items</a></li>";
-          echo "<li class=\"active\"><a href=\"#\">Transaction History</a></li>";
+          echo "<li class=\"active\"><a href=\"transaction-history.php\">Transaction History</a></li>";
           echo "<li><a href=\"#\">Payment Options</a></li>";
           
         }
@@ -140,7 +140,7 @@
           
           echo "<li><a href=\"user-dashboard.php\">Edit Account</a></li>";
           echo "<li><a href=\"user-dashboard-activeitems.php\">Your Active Items</a></li>";
-          echo "<li><a href=\"#\">Transaction History</a></li>";
+          echo "<li><a href=\"transaction-history.php\">Transaction History</a></li>";
           echo "<li class=\"active\"><a href=\"#\">Payment Options</a></li>";
           
         }

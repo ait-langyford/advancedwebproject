@@ -41,7 +41,7 @@
         
         <?php include("navigation.php"); ?>
         
-        <div class="container">
+        <div class="container page">
             
             <?php
                 
@@ -73,7 +73,12 @@
                                 
                                 // product price
                                 echo "<div class='col-xs-6 col-sm-6 col-md-6 col-lg-6'>";
-                                    echo "<h4> $".$productsArray[$temp]['price']."</h4>";
+                                    if ($productsArray[$temp]["tradable"] != 0) {
+                                        echo "<h4> $".$productsArray[$temp]['price']." or trade"."</h4>";
+                                    }
+                                    else {
+                                        echo "<h4> $".$productsArray[$temp]['price']."</h4>";
+                                    }
                                 echo "</div>";
                                 
                                 // view button

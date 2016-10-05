@@ -54,7 +54,7 @@
         
         <?php include("navigation.php");?>
         
-        <div class="container">
+        <div class="container page">
             
             <?php
             
@@ -104,7 +104,7 @@
                                     echo "<a class=\"btn btn-default\" style=\"width: 100%;\" href=\"edit-item.php?id=".$itemsArray[$i]['id']."\";>Edit</a>";
                                 echo "</div>";
                                 echo "<div class='col-xs-4 col-sm-4 col-md-4 col-lg-4'>";
-                                    echo "<a class=\"btn btn-default\" style=\"width: 100%;\" href=\"remove-item.php?id=".$itemsArray[$i]['id']."\";>Remove</a>";
+                                    echo "<a class=\"btn btn-default\" style=\"width: 100%;\" href=\"remove-item.php?productId=".$itemsArray[$i]['id']."\";>Remove</a>";
                                 echo "</div>";
                             
                             echo "</div>";

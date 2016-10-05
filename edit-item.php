@@ -55,37 +55,6 @@
         
     }
     
-    if ($_POST["title"]) {
-    
-        // get input from user
-        $title = $_POST["title"];
-        $category = $_POST["category"];
-        $subcategory = $_POST["subcategory"];
-        $price = $_POST["price"];
-        $description = $_POST["description"];
-        $shippingOptions = $_POST["shippingOptions"];
-        //set reply array
-        $success = array();
-        $updateQuery = "UPDATE products SET title='$title', category='$category', subcategory='$subcategory', price='$price', description='$description', shippingOptions='$shippingOptions' WHERE id='$itemId'";
-        $updateQueryResult = $dbconnection->query($updateQuery);
-        
-        if ($updateQueryResult) {
-            
-            $success["query"] = $updateQueryResult;
-            $success["success"]=true;
-            //echo "success:".$title.$category.$subcategory.$price.$description.$shippingOptions;
-            // update succeeded; redirect to detail page
-            //header("Location: user-dashboard-activeitems.php");
-            
-        }
-        else {
-            $success["success"]=false;
-        }
-        
-        echo json_encode($success);
-            
-    }
-    
 ?>
 
 <!doctype HTML>
@@ -97,7 +66,7 @@
         
         <?php include("navigation.php");?>
         
-        <div class="container">
+        <div class="container page">
             
                 <div class="row">
                     <div class="col-md-8">
@@ -157,6 +126,15 @@
                             <!--price-->
                             <h4>Price</h4>
                             <input type="number" name="price" id="price" class="form-control" value="<?php echo $product['price']; ?>">
+                            <h4>Trade offers allowed</h4>
+                            <?php
+                                if ($product["tradable"] == 1) {
+                                    echo "<input type=\"checkbox\" id=\"tradeCheckbox\" name=\"tradeCheckbox\" value=\"1\" checked>";
+                                }
+                                else {
+                                    echo "<input type=\"checkbox\" id=\"tradeCheckbox\" name=\"tradeCheckbox\" value=\"0\">";
+                                }
+                            ?>
                         </div>
                     
                     </div>
@@ -194,6 +172,8 @@
             
         </div>
         
+        <hr>
+        
         <?php include("footer.php"); ?>
         
     </body>
@@ -204,22 +184,30 @@ $(document).ready(function() {
 
     $('#updateButton').click(function() {
        
+       var itemId = <?php echo $itemId; ?>;
+       var isTradable = $("#tradeCheckbox").is(":checked");
+       var productTradable = 0;
+       if (isTradable) {
+           productTradable = 1;
+       }
+       
        $.ajax({
            type: "POST",
-           url: 'edit-item.php',
-           data:{ title: $("input#title").val(), 
+           url: 'updateItem.php',
+           data:{ 
+                   itemId: itemId,
+                   title: $("input#title").val(), 
                    category: $("#category option:selected").val(), 
                    subcategory: $("#subcategory option:selected").val(), 
                    price: $("input#price").val(), 
+                   tradable: productTradable,
                    shippingOptions: $("#shipping-options option:selected").val(), 
-                   description: $("#description").val() },
-           success:function(data) {
-             //alert("success"+data);
-           }
+                   description: $("#description").val() }
 
       }).done(function(data) {
           
           console.log(data);
+          window.location.href = "user-dashboard-activeitems.php";
           
       });
         

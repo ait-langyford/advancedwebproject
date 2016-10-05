@@ -118,7 +118,7 @@
         
         <?php include("navigation.php");?>
         
-        <div class="container">
+        <div class="container page">
             
             <div class="row">
                 

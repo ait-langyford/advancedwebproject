@@ -69,7 +69,7 @@
         
         <?php include("navigation.php"); ?>
         
-        <div class="container">
+        <div class="container page">
         
             <div class="row">
             
@@ -105,7 +105,6 @@
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
                         <!--buttons-->
                         <a class="btn btn-default pull-right" href="makeOffer.php?productId=<?php echo $product['id']; ?>">make offer</a>
-                        <a class="btn btn-default pull-right" href="#">contact seller</a>
                         <a class="btn btn-default pull-right" href="addToWatchlist.php?productId=<?php echo $product['id']; ?>&userId=<?php echo $userId; ?>">add to watchlist</a>
                     </div>
                 
@@ -167,6 +166,7 @@
                         
                         <div id="images" class="tab-pane fade">
                             <h3>more images</h3>
+                            <h4 style="color: grey">no other images to show</h4>
                         </div>
                         
                     </div>

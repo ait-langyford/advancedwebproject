@@ -47,7 +47,7 @@
         
         <?php include("navigation.php"); ?>
         
-        <div class="container">
+        <div class="container page">
                 
             <?php
             
@@ -57,7 +57,7 @@
                     
                     for ($col = 0; $col < 3; $col++) {
 
-                        echo "<div class='col-md-4 col-sm-4'>";
+                        echo "<div class='col-xs-12 col-sm-12 col-md-4 col-lg-4'>";
                     
                             // product image
                             echo "<div class='centerBlock'>";
@@ -69,10 +69,15 @@
                             echo "<h4>" . $category1Array[$col]['title'] . "</h4>";
                             
                             // product price
-                            echo "<div class='col-md-6 col-sm-6'>";
-                                echo "<h4>$" . $category1Array[$col]['price'] . "</h4>";
+                            echo "<div class='col-xs-6 col-sm-6 col-md-6 col-lg-6'>";
+                                if ($category1Array[$col]["tradable"] != 0) {
+                                    echo "<h4> $".$category1Array[$col]['price']." or trade"."</h4>";
+                                }
+                                else {
+                                    echo "<h4> $".$category1Array[$col]['price']."</h4>";
+                                }
                             echo "</div>";
-                            echo "<div class='col-md-6 col-sm-6'>";
+                            echo "<div class='col-xs-6 col-sm-6 col-md-6 col-lg-6'>";
                                  echo "<a class='btn btn-default pull-right' href='product-detail.php?id=".$category1Array[$col]['id']."'>View</a>";
                             echo "</div>";
                     
@@ -80,7 +85,7 @@
                     
                     }
                     
-                    echo "<div class='col-md-12'>";
+                    echo "<div class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>";
                         $categoryLowerCase = strtolower($effectsCategories[0]);
                         echo "<a class='btn btn-default pull-right' href='". "effects-" . $categoryLowerCase . ".php" . "'>View More</a>";
                     echo "</div>";
@@ -93,7 +98,7 @@
                 
                 for ($col = 0; $col < 3; $col++) {
 
-                    echo "<div class='col-md-4 col-sm-4'>";
+                    echo "<div class='col-xs-12 col-sm-12 col-md-4 col-lg-4'>";
                 
                         // product image
                         echo "<div class='centerBlock'>";
@@ -105,10 +110,15 @@
                         echo "<h4>" . $category2Array[$col]['title'] . "</h4>";
                         
                         // product price
-                        echo "<div class='col-md-6 col-sm-6'>";
-                            echo "<h4>$" . $category2Array[$col]['price'] . "</h4>";
-                        echo "</div>";
-                        echo "<div class='col-md-6 col-sm-6'>";
+                            echo "<div class='col-xs-6 col-sm-6 col-md-6 col-lg-6'>";
+                                if ($category2Array[$col]["tradable"] != 0) {
+                                    echo "<h4> $".$category2Array[$col]['price']." or trade"."</h4>";
+                                }
+                                else {
+                                    echo "<h4> $".$category2Array[$col]['price']."</h4>";
+                                }
+                            echo "</div>";
+                        echo "<div class='col-xs-6 col-sm-6 col-md-6 col-lg-6'>";
                              echo "<a class='btn btn-default pull-right' href='product-detail.php?id=".$category2Array[$col]['id']."'>View</a>";
                         echo "</div>";
                 
@@ -116,7 +126,7 @@
                 
                 }
                 
-                echo "<div class='col-md-12'>";
+                echo "<div class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>";
                     $categoryLowerCase = strtolower($effectsCategories[1]);
                     echo "<a class='btn btn-default pull-right' href='". "effects-" . $categoryLowerCase . ".php" . "'>View More</a>";
                 echo "</div>";
@@ -129,7 +139,7 @@
                 
                     for ($col = 0; $col < 3; $col++) {
 
-                        echo "<div class='col-md-4 col-sm-4'>";
+                        echo "<div class='col-xs-12 col-sm-12 col-md-4 col-lg-4'>";
                     
                             // product image
                             echo "<div class='centerBlock'>";
@@ -141,10 +151,15 @@
                             echo "<h4>" . $category3Array[$col]['title'] . "</h4>";
                             
                             // product price
-                            echo "<div class='col-md-6 col-sm-6'>";
-                                echo "<h4>$" . $category3Array[$col]['price'] . "</h4>";
+                            echo "<div class='col-xs-6 col-sm-6 col-md-6 col-lg-6'>";
+                                if ($category3Array[$col]["tradable"] != 0) {
+                                    echo "<h4> $".$category3Array[$col]['price']." or trade"."</h4>";
+                                }
+                                else {
+                                    echo "<h4> $".$category3Array[$col]['price']."</h4>";
+                                }
                             echo "</div>";
-                            echo "<div class='col-md-6 col-sm-6'>";
+                            echo "<div class='col-xs-6 col-sm-6 col-md-6 col-lg-6'>";
                                  echo "<a class='btn btn-default pull-right' href='product-detail.php?id=".$category3Array[$col]['id']."'>View</a>";
                             echo "</div>";
                     
@@ -152,7 +167,7 @@
                     
                     }
                     
-                    echo "<div class='col-md-12'>";
+                    echo "<div class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>";
                         $categoryLowerCase = strtolower($effectsCategories[2]);
                         echo "<a class='btn btn-default pull-right' href='". "effects-" . $categoryLowerCase . ".php" . "'>View More</a>";
                     echo "</div>";

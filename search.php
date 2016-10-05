@@ -38,7 +38,7 @@
         
         <?php include("navigation.php"); ?>
         
-        <div class="container">
+        <div class="container page">
                 
             <h2>Search Results</h2>
             <hr>

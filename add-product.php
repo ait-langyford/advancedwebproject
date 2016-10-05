@@ -187,7 +187,7 @@
         
         <?php include("navigation.php"); ?>
         
-        <div class="container">
+        <div class="container page">
             
             <!--add product form-->
             <div class="row">
